@@ -25,6 +25,8 @@ sudo npm install -g @angular/cli
 
 Created this app to engage with many features of Angular that I haven’t used before. This includes RxJS, API integration, Angular routing and a reactive approach to Angular Forms.    
 
+----------
+
 ![image](https://user-images.githubusercontent.com/48807725/67438058-32ab4080-f63e-11e9-94d6-48eaa8535cba.png)
 
 ----------
