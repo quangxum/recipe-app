@@ -22,29 +22,20 @@ export class DataStorageService {
     }
 
     fetchRecipes() {
-        return this.authService.user.pipe(
-          take(1),
-          exhaustMap(user => {
-              console.log(user.token);
-              console.log(user);
-            return this.http.get<Recipe[]>(
-              'https://recipe-book-89a1e.firebaseio.com/recipes.json?',
-              {
-                  params: new HttpParams().set('auth', user._token)
-              }
-            );
-          }),
-          map(recipes => {
+        return this.http.get<Recipe[]>(
+            'https://recipe-book-89a1e.firebaseio.com/recipes.json?',
+            ).pipe(
+            map(recipes => {
             return recipes.map(recipe => {
-              return {
+                return {
                 ...recipe,
                 ingredients: recipe.ingredients ? recipe.ingredients : []
-              };
+                };
             });
-          }),
-          tap(recipes => {
+            }),
+            tap(recipes => {
             this.recipeService.setRecipes(recipes);
-          })
+            })
         );
       }
     }
